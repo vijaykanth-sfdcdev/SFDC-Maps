@@ -1,0 +1,29 @@
+.valueClr {
+    color: #08b708;
+    font-weight: 700;
+    font-family: inherit;
+}     
+.varClr {
+   
+    font-weight: 800;
+    
+}    
+.detailsBtn{
+    float: right;
+    margin-top:1rem;
+}   
+.navigationDetails{
+    display: block;
+    margin-top:1rem;
+}        
+.cardName {
+    font-weight: bold;
+    font-size: large;
+    margin-left: 1rem;
+}
+.mapHeader {
+    margin-bottom: 1rem;
+}
+.mapContainer {
+    height: 16rem;
+}

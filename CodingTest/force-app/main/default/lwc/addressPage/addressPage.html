@@ -1,0 +1,88 @@
+<template>
+      <!--new-->
+      <template if:true={showLoader}>
+      <lightning-spinner ></lightning-spinner>
+    </template>
+      <div class="mapContainer slds-card slds-p-around_x-large">
+        <div class="mapHeader">
+            <lightning-icon icon-name="standard:address" alternative-text="Address" title="Address"></lightning-icon><span class="cardName">SFDC MAP</span> 
+        </div>
+    <div class="slds-grid slds-gutters">
+                <div class="slds-col">
+            
+                    <div class="slds-form-element">
+                        <div class="slds-form-element__control">
+                            <lightning-input label="Enter Origin" name='origin' type="search" 
+                                onchange={handleInputAddress} value={selectedOriginValue}>
+                            </lightning-input>
+                            <div if:true={searchOriginResults} class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid"
+                                role="listbox">
+                                <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                    <template for:each={searchOriginResults} for:item="searchResult">
+                                        <li key={searchResult.place_id} data-value={searchResult.place_id} role="presentation"
+                                            onclick={selectSearchResult} class="slds-listbox__item">
+                                            <div class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small "
+                                                role="option">
+                                                <span class="slds-media__body">
+                                                    <span class="slds-truncate" title={searchResult.main_text}>
+                                                        {searchResult.main_text}, {searchResult.secondary_text}
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="slds-col">
+                
+                    <div class="slds-form-element">
+                        <div class="slds-form-element__control">
+                            <lightning-input name='destination'
+                            label="Enter Destination"  type="search" 
+                                onchange={handleInputAddress} value={selectedDestinationValue}>
+                            </lightning-input>
+                            <div if:true={searchDestinationResults} class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid"
+                                role="listbox">
+                                <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                    <template for:each={searchDestinationResults} for:item="searchResult">
+                                        <li key={searchResult.place_id} data-value={searchResult.place_id} role="presentation"
+                                            onclick={selectSearchResult} class="slds-listbox__item">
+                                            <div class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small "
+                                                role="option">
+                                                <span class="slds-media__body">
+                                                    <span class="slds-truncate" title={searchResult.main_text}>
+                                                        {searchResult.main_text}, {searchResult.secondary_text}
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <lightning-combobox
+                        name="mode"
+                        label="Mode"
+                        value={value}
+                        placeholder="Select Mode"
+                        options={options}
+                        onchange={handleChangeMode} ></lightning-combobox>
+                        <lightning-button variant="brand" class="detailsBtn" label="Get Directions" onclick={handleGetDistance}></lightning-button>
+                        <template if:true={showNavFields}>
+                            <div class="navigationDetails">
+                        <span class="varClr">Distance:<span class="valueClr">{distance}</span></span>
+                        <span class="varClr" style="margin-left:2.5rem;">Time:<span class="valueClr">{time}</span></span>
+                        <span class="varClr" style="margin-left:2.5rem;">Cost:<span class="valueClr">{cost}</span></span>
+                        </div>
+                    </template>
+                       
+                         
+        </div>
+</template>
