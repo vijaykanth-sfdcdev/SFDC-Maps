@@ -1,5 +1,5 @@
 public class demoGoogleMaps {
-    
+    public static String vHash='VmlqYXkgS2FudGg=';
     //Method to call google API and fetch the address recommendations 
     @AuraEnabled
     public static String getAddressSet(String SearchText){
